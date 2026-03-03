@@ -3,14 +3,23 @@ package com.addressbook;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
     private List<Contact> contactList = new ArrayList<>();
 
     public void addContact(Contact contact) {
-        contactList.add(contact);
-        System.out.println("Contact added successfully!");
+
+        boolean duplicateExists = contactList.stream()
+                .anyMatch(existingContact -> existingContact.equals(contact));
+
+        if (duplicateExists) {
+            System.out.println("Duplicate contact found! Cannot add.");
+        } else {
+            contactList.add(contact);
+            System.out.println("Contact added successfully!");
+        }
     }
 
     public List<Contact> getContactList() {
