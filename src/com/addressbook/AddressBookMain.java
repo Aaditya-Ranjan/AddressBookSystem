@@ -18,7 +18,9 @@ public class AddressBookMain {
             System.out.println("\nChoose an option:");
             System.out.println("1. Create New Address Book");
             System.out.println("2. Select Address Book");
-            System.out.println("3. Exit");
+            System.out.println("3. Search by City");
+            System.out.println("4. Search by State");
+            System.out.println("5. Exit");
 
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -108,6 +110,20 @@ public class AddressBookMain {
                     break;
 
                 case 3:
+                    System.out.println("Enter City to search:");
+                    String city = scanner.nextLine();
+                    system.searchByCity(city)
+                            .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+                    break;
+
+                case 4:
+                    System.out.println("Enter State to search:");
+                    String state = scanner.nextLine();
+                    system.searchByState(state)
+                            .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+                    break;
+
+                case 5:
                     exit = true;
                     System.out.println("Exiting Address Book System...");
                     break;
