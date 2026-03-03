@@ -40,6 +40,15 @@ public class AddressBookMain {
 
         addressBook.addContact(contact);
 
+        System.out.println("Do you want to edit a contact? (yes/no)");
+        String choice = scanner.nextLine();
+
+        if (choice.equalsIgnoreCase("yes")) {
+            System.out.println("Enter First Name of contact to edit:");
+            String nameToEdit = scanner.nextLine();
+            addressBook.editContact(nameToEdit, scanner);
+        }
+
         scanner.close();
     }
 }
