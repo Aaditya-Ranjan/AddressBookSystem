@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class AddressBookSystem {
 
@@ -18,6 +19,24 @@ public class AddressBookSystem {
             addressBookMap.put(name, new AddressBook());
             System.out.println("Address Book created successfully!");
         }
+    }
+
+    public void countByCity(String city) {
+
+        long count = cityMap.getOrDefault(city, new java.util.ArrayList<>())
+                .stream()
+                .count();
+
+        System.out.println("Number of contacts in city " + city + ": " + count);
+    }
+
+    public void countByState(String state) {
+
+        long count = stateMap.getOrDefault(state, new java.util.ArrayList<>())
+                .stream()
+                .count();
+
+        System.out.println("Number of contacts in state " + state + ": " + count);
     }
 
     public void addContactToCityStateMap(Contact contact) {
