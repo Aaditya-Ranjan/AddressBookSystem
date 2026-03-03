@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class AddressBookSystem {
 
     private Map<String, AddressBook> addressBookMap = new HashMap<>();
+    private Map<String, List<Contact>> cityMap = new HashMap<>();
+    private Map<String, List<Contact>> stateMap = new HashMap<>();
 
     public void addAddressBook(String name) {
         if (addressBookMap.containsKey(name)) {
@@ -16,6 +18,29 @@ public class AddressBookSystem {
             addressBookMap.put(name, new AddressBook());
             System.out.println("Address Book created successfully!");
         }
+    }
+
+    public void addContactToCityStateMap(Contact contact) {
+
+        cityMap.computeIfAbsent(contact.getCity(), k -> new ArrayList<>())
+                .add(contact);
+
+        stateMap.computeIfAbsent(contact.getState(), k -> new ArrayList<>())
+                .add(contact);
+    }
+
+    public void viewByCity(String city) {
+
+        cityMap.getOrDefault(city, new ArrayList<>())
+                .forEach(contact ->
+                        System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+    }
+
+    public void viewByState(String state) {
+
+        stateMap.getOrDefault(state, new ArrayList<>())
+                .forEach(contact ->
+                        System.out.println(contact.getFirstName() + " " + contact.getLastName()));
     }
 
     public List<Contact> searchByCity(String city) {

@@ -15,12 +15,13 @@ public class AddressBookMain {
 
         while (!exit) {
 
-            System.out.println("\nChoose an option:");
             System.out.println("1. Create New Address Book");
             System.out.println("2. Select Address Book");
             System.out.println("3. Search by City");
             System.out.println("4. Search by State");
-            System.out.println("5. Exit");
+            System.out.println("5. View by City");
+            System.out.println("6. View by State");
+            System.out.println("7. Exit");
 
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -85,6 +86,7 @@ public class AddressBookMain {
                                         city, state, zip, phoneNumber, email);
 
                                 addressBook.addContact(contact);
+                                system.addContactToCityStateMap(contact);
                                 break;
 
                             case 2:
@@ -124,6 +126,18 @@ public class AddressBookMain {
                     break;
 
                 case 5:
+                    System.out.println("Enter City:");
+                    String cityView = scanner.nextLine();
+                    system.viewByCity(cityView);
+                    break;
+
+                case 6:
+                    System.out.println("Enter State:");
+                    String stateView = scanner.nextLine();
+                    system.viewByState(stateView);
+                    break;
+
+                case 7:
                     exit = true;
                     System.out.println("Exiting Address Book System...");
                     break;
