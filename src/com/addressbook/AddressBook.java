@@ -17,6 +17,25 @@ public class AddressBook {
         return contactList;
     }
 
+    public void deleteContact(String firstName) {
+
+        Contact contactToRemove = null;
+
+        for (Contact contact : contactList) {
+            if (contact.getFirstName().equalsIgnoreCase(firstName)) {
+                contactToRemove = contact;
+                break;
+            }
+        }
+
+        if (contactToRemove != null) {
+            contactList.remove(contactToRemove);
+            System.out.println("Contact deleted successfully!");
+        } else {
+            System.out.println("Contact not found!");
+        }
+    }
+
     public void editContact(String firstName, Scanner scanner) {
 
         for (Contact contact : contactList) {
