@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class AddressBook {
 
@@ -24,6 +25,14 @@ public class AddressBook {
 
     public List<Contact> getContactList() {
         return contactList;
+    }
+
+    public void sortByName() {
+
+        contactList.stream()
+                .sorted(Comparator.comparing(Contact::getFirstName)
+                        .thenComparing(Contact::getLastName))
+                .forEach(System.out::println);
     }
 
     public void deleteContact(String firstName) {

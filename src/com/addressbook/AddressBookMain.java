@@ -53,7 +53,8 @@ public class AddressBookMain {
                         System.out.println("1. Add Contact");
                         System.out.println("2. Edit Contact");
                         System.out.println("3. Delete Contact");
-                        System.out.println("4. Back");
+                        System.out.println("4. Sort by Name");
+                        System.out.println("5. Back");
 
                         int option = Integer.parseInt(scanner.nextLine());
 
@@ -104,6 +105,10 @@ public class AddressBookMain {
                                 break;
 
                             case 4:
+                                addressBook.sortByName();
+                                break;
+
+                            case 5:
                                 back = true;
                                 break;
 

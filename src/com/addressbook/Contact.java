@@ -100,4 +100,15 @@ public class Contact {
     public int hashCode() {
         return (firstName + lastName).toLowerCase().hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + firstName + " " + lastName +
+                ", Address: " + address +
+                ", City: " + city +
+                ", State: " + state +
+                ", Zip: " + zip +
+                ", Phone: " + phoneNumber +
+                ", Email: " + email;
+    }
 }
