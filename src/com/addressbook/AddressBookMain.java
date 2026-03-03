@@ -57,7 +57,9 @@ public class AddressBookMain {
                         System.out.println("5. Sort by City");
                         System.out.println("6. Sort by State");
                         System.out.println("7. Sort by Zip");
-                        System.out.println("8. Back");
+                        System.out.println("8. Write to File");
+                        System.out.println("9. Read from File");
+                        System.out.println("10. Back");
 
                         int option = Integer.parseInt(scanner.nextLine());
 
@@ -124,6 +126,14 @@ public class AddressBookMain {
                                 break;
 
                             case 8:
+                                addressBook.writeToFile("addressbook.txt");
+                                break;
+
+                            case 9:
+                                addressBook.readFromFile("addressbook.txt");
+                                break;
+
+                            case 10:
                                 back = true;
                                 break;
 

@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class AddressBook {
 
@@ -20,6 +24,35 @@ public class AddressBook {
         } else {
             contactList.add(contact);
             System.out.println("Contact added successfully!");
+        }
+    }
+
+    public void writeToFile(String fileName) {
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+
+            for (Contact contact : contactList) {
+                writer.write(contact.toString() + System.lineSeparator());
+            }
+
+            System.out.println("Contacts written to file successfully!");
+
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    public void readFromFile(String fileName) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
         }
     }
 
