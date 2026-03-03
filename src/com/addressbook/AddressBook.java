@@ -35,6 +35,27 @@ public class AddressBook {
                 .forEach(System.out::println);
     }
 
+    public void sortByCity() {
+
+        contactList.stream()
+                .sorted(Comparator.comparing(Contact::getCity))
+                .forEach(System.out::println);
+    }
+
+    public void sortByState() {
+
+        contactList.stream()
+                .sorted(Comparator.comparing(Contact::getState))
+                .forEach(System.out::println);
+    }
+
+    public void sortByZip() {
+
+        contactList.stream()
+                .sorted(Comparator.comparing(Contact::getZip))
+                .forEach(System.out::println);
+    }
+
     public void deleteContact(String firstName) {
 
         Contact contactToRemove = null;
